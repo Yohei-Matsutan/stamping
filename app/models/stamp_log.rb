@@ -1,0 +1,2 @@
+class StampLog < ApplicationRecord
+end
