@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'users/main'
 
+  post 'stamps/clock_in', as: 'clock_in'
+  patch 'stamps/clock_out', as: 'clock_out'
+
   get 'stamps/index'
   get 'stamps/show'
   get 'stamps/edit'
