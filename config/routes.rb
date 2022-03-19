@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
+
+  get 'homes/admin_certificate', as: 'admin_certificate'
   
   get 'edit_logs/new'
   get 'edit_logs/create'
