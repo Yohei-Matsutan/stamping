@@ -21,7 +21,6 @@ class StampsController < ApplicationController
 
   def show
     @stamp = Stamp.find(params[:id])
-    @stamp_logs = @stamp.stamp_logs
   end
 
   def edit
