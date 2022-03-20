@@ -7,16 +7,13 @@
 	<%= link_to "出勤" , clock_in_path, method: :post %>
 <% end %>
 
-<%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-
 <%= flash[:failure] %>
 <%= link_to "管理者画面",users_path %>
 <%# if @user.is_admin %>
 	<%#= link_to "管理者画面",users_path %>
 <%# end %>
 
-<%# 総勤務時間表示のための入れ物準備　%>
-<% all_work_sec = 0 %>
+
 <table>
 	<thead>
 		<tr>
@@ -27,6 +24,8 @@
 		</tr>
 	</thead>
 	<tbody>
+		<%# 総勤務時間表示のための入れ物準備　%>
+		<% all_work_sec = 0 %>
 		<% @stamps.each do |stamp| %>
 			<tr>
 				<td><%= link_to stamp.in_time.day, stamp_path(stamp.id) %></td>
