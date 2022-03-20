@@ -1,24 +1,19 @@
-# README
+# TYAKKARI!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+- 出退勤時に打刻し、記録を残すことができる
+- 管理者は全ユーザーの出勤記録を確認、編集/削除、csv出力することができる
+- 管理者権限のない一般ユーザーは、「誰が、自分のどの出勤記録を、どう編集したか」を確認できる
 
-Things you may want to cover:
+## 仕様
+- ユーザーは全員同じモデルに格納される
+- 管理者と一般ユーザーはis_admin属性で区別され、管理者のみがその属性を編集できる
+- デフォルトで存在する管理者「admin_origin」にログインして、その他の管理者を承認する
+- 一般ユーザー向けにmain page(「〇〇さん、こんにちは」のページ)と、出勤記録詳細ページがある
+- 「管理者用」ページでは、管理者が概要にあるような操作を行うことができる
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##作りながら考えたこと
+- デジタルで打刻したところで、画面を見て手で集計していては意味がないと思い、その後の汎用性が高そうなcsv出力を実装しました
+- 時間内に、思いついたことや細かいこと(出勤記録を編集する際に出退勤時間が逆転してしまっても大丈夫な点など)を反映し切るには、まだまだ技術力が足りず、妥協に終わった点がいくつかあるため、悔しい思いです
+- 最近学習中のデータ設計を、自身の構想に基づいて行い、試行錯誤しながら実装していく過程はとても良い経験になった思います
+- 初めて0からアプリケーションを作成しましたが、その過程はとても刺激的で楽しい時間でした
