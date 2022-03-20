@@ -14,7 +14,7 @@
 	<tbody>
 		<% @users.each do |user| %>
 			<tr>
-				<td><%= user.name %></td>
+				<td><%= link_to user.name, user_path(user.id) %></td>
 				<td><%= user.email %></td>
 				<td>
 					<%# 総勤務時間表示 %>
@@ -25,7 +25,7 @@
 							<% all_work_sec = all_work_sec + work_sec %>
 						<% end %>	
 					<% end %>
-					<%= all_work_sec %>
+					<%= Time.at(all_work_sec).utc.strftime('%R') %>
 
 				</td>
 				<td><%= user.stamps.count %></td>

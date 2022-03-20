@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_080540) do
+ActiveRecord::Schema.define(version: 2022_03_20_091253) do
 
   create_table "stamp_logs", force: :cascade do |t|
     t.integer "user_id"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2022_03_19_080540) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.boolean "is_admin"
-    t.boolean "is_on_duty"
+    t.boolean "is_admin", default: false
+    t.boolean "is_on_duty", default: false
     t.integer "wage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

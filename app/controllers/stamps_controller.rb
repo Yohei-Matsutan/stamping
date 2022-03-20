@@ -32,5 +32,8 @@ class StampsController < ApplicationController
   end
 
   def destroy
+    stamp = Stamp.find(params[:id])
+    stamp.delete
+    redirect_back(fallback_location: root_path)
   end
 end
