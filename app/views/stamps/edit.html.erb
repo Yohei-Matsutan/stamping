@@ -1,15 +1,15 @@
-<h1>Stamps#edit</h1>
-<p>Find me in app/views/stamps/edit.html.erb</p>
+<h1>[管理者用]打刻編集</h1>
+
 <h2><%= @stamp.user.name %></h2>
 
 <%= form_with model: @stamp do |f| %>
-	<table>
+	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th></th>
-				<th>日付</th>
-				<th>出勤時刻</th>
-				<th>退勤時刻</th>
+				<th scope="col" ></th>
+				<th scope="col" >日付</th>
+				<th scope="col" >出勤時刻</th>
+				<th scope="col" >退勤時刻</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,10 +24,12 @@
 			</tr>
 			<tr>
 				<td>更新後</td>
-				<td colspan="2" ><%= f.datetime_field :in_time %></td>
+				<td></td>
+				<td><%= f.datetime_field :in_time %></td>
 				<td><%= f.datetime_field :out_time %></td>
-				<td><%= f.submit '編集を反映' %></td>
+				
 			</tr>
 		</tbody>
 	</table>
+	<%= f.submit '編集を反映' %>
 <% end %>

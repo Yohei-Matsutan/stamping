@@ -1,13 +1,12 @@
-<h1>Stamps#show</h1>
-<p>Find me in app/views/stamps/show.html.erb</p>
+<h1>出勤記録詳細</h1>
 
-<h2><%= @stamp.user.name %></h2>
-<h2>出勤記録</h2>
-<table>
+<h2><%= @stamp.user.name %>さん</h2>
+
+<table class="table table-striped" >
 	<thead>
 		<tr>
-			<th>出勤時刻</th>
-			<th>退勤時刻</th>
+			<th scope="col" >出勤時刻</th>
+			<th scope="col" >退勤時刻</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,14 +19,14 @@
 
 <h2>変更履歴</h2>
 <% @stamp.stamp_logs.each do |stamp_log|%>
-<h3>edited by <%= stamp_log.user.name %> in <%= stamp_log.created_at.strftime("%F %R") %></h3>
-	<table>
+<p>edited by <%= stamp_log.user.name %> on <%= stamp_log.created_at.strftime("%F %R") %></p>
+	<table class="table table-striped" >
 		<thead>
 			<tr>
-				<th></th>
-				<th>日付</th>
-				<th>出勤時刻</th>
-				<th>退勤時刻</th>
+				<th scope="col" ></th>
+				<th scope="col" >日付</th>
+				<th scope="col" >出勤時刻</th>
+				<th scope="col" >退勤時刻</th>
 			</tr>
 		</thead>
 		<tbody>
