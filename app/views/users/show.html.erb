@@ -6,3 +6,5 @@
 <%= flash[:edited] %>
 <%= flash[:deleted] %>
 <%= render 'stamp_table', stamps: @stamps %>
+
+<%= link_to "CSV出力",user_path(@user.id, format: :csv) %>
