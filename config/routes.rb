@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   get 'users/main'
+  resources :users, only: [:index]
 
   post 'stamps/clock_in', as: 'clock_in'
   patch 'stamps/clock_out', as: 'clock_out'
-
+  resources :stamps, only: [:show]
+  
   get 'stamps/index'
-  get 'stamps/show'
   get 'stamps/edit'
   get 'stamps/update'
   get 'stamps/destroy'

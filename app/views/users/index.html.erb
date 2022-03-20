@@ -1,0 +1,20 @@
+<h1>管理者用User一覧</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>メールアドレス</th>
+			<th>勤務時間</th>
+			<th>勤務回数</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.stamps.each do |stamp| %></td>
+
+	</tbody>
+</table>

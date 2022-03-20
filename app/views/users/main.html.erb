@@ -9,9 +9,44 @@
 
 <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
 
-<% @stamps.each do |stamp| %>
-	<h3>In Time</h3>
-	<p><%= stamp.in_time%></p>
-	<h3>Out Time</h3>
-	<p><%= stamp.out_time%></p>
-<% end %>
+<%= flash[:failure] %>
+<%= link_to "管理者画面",users_path %>
+<%# if @user.is_admin %>
+	<%#= link_to "管理者画面",users_path %>
+<%# end %>
+
+<%# 総勤務時間表示のための入れ物準備　%>
+<% all_work_sec = 0 %>
+<table>
+	<thead>
+		<tr>
+			<th>日付</th>
+			<th>出勤</th>
+			<th>退勤</th>
+			<th>勤務時間[h]</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @stamps.each do |stamp| %>
+			<tr>
+				<td><%= link_to stamp.in_time.day, stamp_path(stamp.id) %></td>
+				
+				<td><%= stamp.view_in_time %></td>
+				<% if stamp.out_time %>	
+					<td><%= stamp.view_out_time %></td>
+					<td>
+						<%= stamp.work_hour %>
+						<%# 総勤務時間の計算　%>
+						<% work_sec = (stamp.out_time - stamp.in_time).floor %>
+						<% all_work_sec = all_work_sec + work_sec %>
+					</td>
+				<% end %> 
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h3>総勤務時間</h3>
+<%= Time.at(all_work_sec).utc.strftime('%R') %>
+<h3>総勤務回数</h3>
+<%= @stamps.count %>
