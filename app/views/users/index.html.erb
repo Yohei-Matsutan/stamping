@@ -1,0 +1,43 @@
+<h1>管理者用User一覧</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>メールアドレス</th>
+			<th>勤務時間</th>
+			<th>勤務回数</th>
+			<th>詳細</th>
+			<th>管理者権限</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td>
+					<%# 総勤務時間表示 %>
+					<% all_work_sec = 0 %>
+					<% user.stamps.each do |stamp| %>
+						<% if stamp.out_time %>
+							<% work_sec = (stamp.out_time - stamp.in_time).floor %>
+							<% all_work_sec = all_work_sec + work_sec %>
+						<% end %>	
+					<% end %>
+					<%= Time.at(all_work_sec).utc.strftime('%R') %>
+
+				</td>
+				<td><%= user.stamps.count %></td>
+				<td><%= link_to '詳細/編集', user_path(user.id) %></td>
+				<td>
+					<% if user.is_admin %>
+						<%= link_to '管理者' , authorize_path(user.id), method: :patch, "data-confirm" => "このユーザーを管理者から除外しますか？" %>
+					<% else %>
+						<%= link_to '一般' , authorize_path(user.id), method: :patch, "data-confirm" => "このユーザーを管理者として承認しますか？" %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
