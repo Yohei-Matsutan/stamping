@@ -1,5 +1,6 @@
 class Stamp < ApplicationRecord
 	belongs_to :user
+	has_many :stamp_logs
 
 	def view_in_time
 		# sprintf("%02d")で0埋め表示

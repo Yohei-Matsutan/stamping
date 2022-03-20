@@ -14,7 +14,7 @@
 	<tbody>
 		<% @users.each do |user| %>
 			<tr>
-				<td><%= link_to user.name, user_path(user.id) %></td>
+				<td><%= user.name %></td>
 				<td><%= user.email %></td>
 				<td>
 					<%# 総勤務時間表示 %>

@@ -1,2 +1,33 @@
 <h1>Stamps#edit</h1>
 <p>Find me in app/views/stamps/edit.html.erb</p>
+<h2><%= @stamp.user.name %></h2>
+
+<%= form_with model: @stamp do |f| %>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>日付</th>
+				<th>出勤時刻</th>
+				<th>退勤時刻</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>更新前</td>
+				<td><%= @stamp.in_time.strftime("%F") %></td>
+				<td><%= @stamp.in_time.strftime("%R") %></td>
+				<td><%= @stamp.out_time.strftime("%R") %></td>
+			</tr>
+			<tr>
+				<td>↓</td>
+			</tr>
+			<tr>
+				<td>更新後</td>
+				<td colspan="2" ><%= f.datetime_field :in_time %></td>
+				<td><%= f.datetime_field :out_time %></td>
+				<td><%= f.submit '編集を反映' %></td>
+			</tr>
+		</tbody>
+	</table>
+<% end %>
